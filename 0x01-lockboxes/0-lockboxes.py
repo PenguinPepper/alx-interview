@@ -9,7 +9,7 @@ def canUnlockAll(boxes):
         for j in range(num_boxes):
             key = boxes[i][j]
             if (key == i):
-                return key
+                return True
             else:
-                return key
+                return False
 
