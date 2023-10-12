@@ -5,7 +5,7 @@
 def minOperations(n):
     """Find the minimum number of operations needed
     to get to n number of 'H' characters in a file
-    
+
     n: number of characters in the file
     """
     if (n <= 1):
