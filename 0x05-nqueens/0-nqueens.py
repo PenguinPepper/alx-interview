@@ -7,6 +7,8 @@ If N is smaller than 4, print N must be at least 4,
 followed by a new line, and exit with the status 1 The
 program should print every possible solution to the problem
 One solution per line
+
+no two queens threaten each other; thus, a solution requires that no two queens share the same row, column, or diagonal.
 """
 import sys
 
@@ -25,4 +27,13 @@ else:
             print("N must be at least 4")
             sys.exit(1)
         else:
-            pass
+            result = []
+            queen = 0
+            for i in range(num):
+                if (i == 0):
+                    arr = []
+                    queen += 1
+                    arr.append("{}, {}".format(i, queen))
+                else: pass
+            result.append(arr)
+        print("{}".format(result))
