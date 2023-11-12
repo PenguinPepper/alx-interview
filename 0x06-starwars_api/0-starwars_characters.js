@@ -7,16 +7,22 @@ Display one character name per line in the same order as the “characters” li
 */
 
 const request = require('request');
+const util = require('util');
+const requestPromise = util.promisify(request);
 const movieId = process.argv[2];
 
-request('https://swapi-api.alx-tools.com/api/films/' + movieId, function (error, res, body) {
-  if (error) throw error;
-  const response = JSON.parse(body);
-  for (const character of response.characters) {
-    request(character, function (err, ress, bod) {
-      const characterBody = JSON.parse(bod);
-      console.log(characterBody.name);
-      if (err) throw err;
-    });
+async function movieCharacter () {
+  try {
+    const response = await requestPromise('https://swapi-api.alx-tools.com/api/films/' + movieId);
+    const responseParse = JSON.parse(response.body);
+    for (const character of responseParse.characters) {
+      const characterResponse = await requestPromise(character);
+      const characterResponseParse = JSON.parse(characterResponse.body);
+      console.log(characterResponseParse.name);
+    }
+  } catch (error) {
+    console.error(error);
   }
-});
+}
+
+movieCharacter();
