@@ -29,5 +29,3 @@ def makeChange(coins, total):
     if other_coins % 2 == 0:
         other_coins = other_coins / 2
     return int(other_coins)
-
-
