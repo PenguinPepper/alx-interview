@@ -12,20 +12,12 @@ def makeChange(coins, total):
     You can assume you have an infinite number of each
     denomination of coin in the list
     """
-    if max(coins) < total:
-        remainder = total - max(coins)
-    else:
-        remainder = total
-    multiples = []
+    change = [float('inf')] * (total + 1)
+    change[0] = 0
     for i in coins:
-        if remainder % i == 0:
-            multiples.append(i)
-    if not multiples:
+        for j in range(i, total + 1):
+            change[j] = min(change[j], change[j - i] + 1)
+    if change[total] != float('inf'):
+        return int(change[total])
+    else:
         return -1
-    other_coins = 0
-    for j in multiples:
-        if (remainder / j).is_integer():
-            other_coins += remainder / j
-    if other_coins % 2 == 0:
-        other_coins = other_coins / 2
-    return int(other_coins)
