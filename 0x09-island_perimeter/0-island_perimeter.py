@@ -14,9 +14,11 @@ def island_perimeter(grid):
     isn’t connected to the water surrounding the island)."""
     ones = 0
     for i in range(len(grid)):
-        for j in grid[i]:
-            if j == 1:
-                ones += 1
-    if ones == 1:
-        return 4
-    return (ones - 2) * 4
+        for j in range(len(grid[i])):
+            if grid[i][j] == 1:
+                ones += 4
+                if (i > 0 and grid[i - 1][j] == 1):
+                    ones -= 2
+                if (j > 0 and grid[i][j - 1] == 1):
+                    ones -= 2
+    return ones
