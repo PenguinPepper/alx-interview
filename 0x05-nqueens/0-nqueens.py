@@ -28,14 +28,6 @@ else:
             print("N must be at least 4")
             sys.exit(1)
         else:
-            result = []
-            queen = 0
             for i in range(num):
-                if (i == 0):
-                    arr = []
-                    queen += 1
-                    arr.append("{}, {}".format(i, queen))
-                else:
-                    pass
-            result.append(arr)
-        print("{}".format(result))
+                formatted_solutin = [[i, num - 1]]
+                print(formatted_solution)
