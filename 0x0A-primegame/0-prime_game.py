@@ -17,11 +17,15 @@ def isWinner(x, nums):
                 if num % available_nums[i] != 0:
                     left_nums.append(num)
             available_nums = left_nums
-            rounds +=1
-    if (len(available_nums) <= 1):
-        winners.append(i)
-    if len(set(winners)) == 1:
-        if (winners[0] % 2 == 0):
+            if (len(available_nums) <= 1):
+                winners.append(i)
+                break
+        rounds += 1
+    freq = {i: winners.count(i) for i in winners}
+    max_freq = max(freq.values())
+    winners = [player for player, count in freq.items() if count == max_freq]
+    if len(winners) == 1:
+        if winners[0] == 1:
             return "Ben"
         else:
             return "Maria"
