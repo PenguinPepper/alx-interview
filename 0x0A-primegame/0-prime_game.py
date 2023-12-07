@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module contains the function isWinner"""
 
+
 def isWinner(x, nums):
     """
     where x is the number of rounds and nums is an array of n
@@ -25,9 +26,9 @@ def isWinner(x, nums):
     max_freq = max(freq.values())
     winners = [player for player, count in freq.items() if count == max_freq]
     if len(winners) == 1:
-        if winners[0] == 1:
-            return "Ben"
-        else:
+        if winners[0] == 0:
             return "Maria"
+        else:
+            return "Ben"
     else:
         return None
