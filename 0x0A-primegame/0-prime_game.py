@@ -27,7 +27,7 @@ def isWinner(x, nums):
     winners = [player for player, count in freq.items() if count == max_freq]
     if len(winners) == 1:
         if winners[0] == 0:
-            return "Maria"
+            return "Ben"
         else:
             return "Ben"
     else:
